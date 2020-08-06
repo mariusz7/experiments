@@ -24,4 +24,4 @@ workflows:
       jobs:
         - long-second-stage:
           requires:
-              - long-second-stage
+            - long-second-stage
