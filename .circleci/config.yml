@@ -23,5 +23,5 @@ workflows:
     "Test inifinite jobs chain":
       jobs:
         - long-second-stage:
-          requires:
+            requires:
             - long-second-stage
