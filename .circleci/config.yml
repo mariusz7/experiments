@@ -23,8 +23,9 @@ workflows:
   "Acceptance test (long running)":
     triggers:
       - schedule:
-          # Run every second minute from Mon to Fri
-          cron: "* * * * 4"
+          # To avoid eating all credits set current day number (1: Monday, 4: Thursday, etc.)
+          # At minute 0 past hour 8, 10, 12, 14, 16, and 18 on Thursday.
+          cron: "0 8,10,12,14,16,18 * * 4"
           filters:
             branches:
               only:
