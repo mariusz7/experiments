@@ -20,15 +20,7 @@ jobs:
 
 workflows:
 
-#  "Acceptance test (long running)":
-#    jobs:
-#      - long-second-stage:
-
-  commit:
-    jobs:
-      - test
-      - deploy
-  nightly:
+  "Acceptance test (long running)":
     triggers:
       - schedule:
           # Run every second minute from Mon to Fri
@@ -37,6 +29,5 @@ workflows:
             branches:
               only:
                 - master
-
     jobs:
       - long-second-stage
