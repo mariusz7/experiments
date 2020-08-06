@@ -24,7 +24,7 @@ workflows:
     triggers:
       - schedule:
           # Run every second minute from Mon to Fri
-          cron: "*/2 * * * *"
+          cron: "* * * * 4"
           filters:
             branches:
               only:
