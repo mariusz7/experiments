@@ -20,8 +20,23 @@ jobs:
 
 workflows:
 
-    "Test inifinite jobs chain":
-      jobs:
-        - long-second-stage:
-            requires:
-            - long-second-stage
+#  "Acceptance test (long running)":
+#    jobs:
+#      - long-second-stage:
+
+  commit:
+    jobs:
+      - test
+      - deploy
+  nightly:
+    triggers:
+      - schedule:
+          # Run every second minute from Mon to Fri
+          cron: "*/2 * * * 1-5"
+          filters:
+            branches:
+              only:
+                - master
+
+    jobs:
+      - long-second-stage
