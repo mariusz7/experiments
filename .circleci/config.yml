@@ -1,0 +1,27 @@
+version: 2.1
+
+
+orbs:
+  node: circleci/node@1.1.6
+  browser-tools: circleci/browser-tools@1.0.1
+  aws-ecr: circleci/aws-ecr@6.11.0
+  aws-ecs: circleci/aws-ecs@1.2.0
+  slack: circleci/slack@3.4.2
+
+jobs:
+
+  long-second-stage:
+    docker:
+      - image: circleci/node:14.6.0-browsers
+    resource_class: small
+    steps:
+      - run: echo "Test"
+
+
+workflows:
+
+    "Test inifinite jobs chain":
+      jobs:
+        - long-second-stage:
+          requires:
+              - long-second-stage
